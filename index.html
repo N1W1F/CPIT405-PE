@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CPIT-405 Practice Exam</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light;
+--bg:#f5f6fb;--card:#fff;--tx:#1b2333;--mu:#5d6779;--ac:#3b5bdb;--ac2:#e8edff;--ok:#0b7a3b;--okbg:#e5f6ec;--cb:#0f172a;--ct:#e6ebf5;--bd:#e1e5ee;--hl:#ffd8a8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0e121b;--card:#171c28;--tx:#e8ecf5;--mu:#98a2b8;--ac:#8fa6ff;--ac2:#222a45;--ok:#6fdc9a;--okbg:#14301f;--cb:#0a0d14;--ct:#e6ebf5;--bd:#2a3144;--hl:#5b3d12}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0e121b;--card:#171c28;--tx:#e8ecf5;--mu:#98a2b8;--ac:#8fa6ff;--ac2:#222a45;--ok:#6fdc9a;--okbg:#14301f;--cb:#0a0d14;--ct:#e6ebf5;--bd:#2a3144;--hl:#5b3d12}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:10}
+header{background:linear-gradient(135deg,#3b5bdb,#7048e8);color:#fff;padding:44px 20px 52px;text-align:center}
+header h1{margin:0 0 6px;font-size:clamp(26px,5vw,40px);letter-spacing:-.5px}
+header p{margin:0;opacity:.9}
+.pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.pills span{background:rgba(255,255,255,.18);padding:4px 12px;border-radius:99px;font-size:14px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--card);border-bottom:1px solid var(--bd);display:flex;gap:4px;padding:8px 12px;overflow-x:auto}
+nav a{white-space:nowrap;text-decoration:none;color:var(--mu);padding:6px 14px;border-radius:99px;font-size:14px;font-weight:600}
+nav a:hover{background:var(--ac2);color:var(--ac)}
+nav button{margin-left:auto;white-space:nowrap}
+button{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--ac);background:var(--ac2);color:var(--ac);padding:6px 14px;border-radius:99px;cursor:pointer}
+main{max-width:860px;margin:0 auto;padding:12px 16px 60px}
+h2{font-size:24px;margin:44px 0 6px;display:flex;align-items:center;gap:10px}
+h2 small{font-size:13px;font-weight:600;color:var(--ac);background:var(--ac2);padding:2px 10px;border-radius:99px}
+.sub{color:var(--mu);margin:0 0 16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px 20px;margin:14px 0;box-shadow:0 1px 3px rgba(20,30,60,.06)}
+.card h3{margin:0 0 8px;font-size:17px}
+.n{display:inline-block;min-width:28px;height:28px;line-height:28px;text-align:center;background:var(--ac);color:#fff;border-radius:8px;font-size:14px;margin-right:8px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:10px 0}
+.opts div{border:1px solid var(--bd);border-radius:10px;padding:6px 12px;background:var(--bg)}
+details{margin-top:10px}
+summary{cursor:pointer;color:var(--ac);font-weight:600;font-size:14px;list-style:none}
+summary::before{content:"\25B8  "}
+details[open] summary::before{content:"\25BE  "}
+.a{background:var(--okbg);color:var(--ok);border-radius:10px;padding:10px 14px;margin-top:8px;font-weight:500}
+.a *{color:inherit}
+pre{background:var(--cb);color:var(--ct);border-radius:10px;padding:14px 16px;overflow-x:auto;font:14px/1.6 ui-monospace,"SF Mono",Menlo,Consolas,monospace;margin:10px 0;tab-size:2}
+code{font:.9em ui-monospace,Menlo,Consolas,monospace;background:var(--ac2);color:var(--ac);padding:1px 6px;border-radius:5px}
+pre code{background:none;color:inherit;padding:0}
+.c{color:#7f8ca8}
+ul{margin:6px 0;padding-left:22px}li{margin:3px 0}
+.tw{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{border:1px solid var(--bd);padding:7px 12px;text-align:left}
+th{background:var(--ac2);color:var(--ac)}
+.s2xx{color:var(--ok);font-weight:700}.s3xx{color:#e67700;font-weight:700}.s4xx{color:#d6336c;font-weight:700}.s5xx{color:#862e9c;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.grid .card{margin:0}
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;padding:6px 0 6px 40px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:0;top:5px;width:28px;height:28px;line-height:28px;text-align:center;background:var(--ac);color:#fff;border-radius:50%;font-size:14px;font-weight:700}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
+.ask{background:var(--ac2);color:var(--tx);border-radius:10px;padding:7px 12px;margin:8px 0;font-size:15px}
+.ask b{color:var(--ac)}
+.ar{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;margin-top:8px;font-size:15.5px;line-height:1.75}
+</style>
+</head>
+<body>
+<header>
+<h1>CPIT-405 Practice Exam</h1>
+<p>Web Applications · Internet &amp; Web · HTML · CSS · JavaScript</p>
+<div class="pills"><span>20 marks</span><span>7 MCQ</span><span>4 short essays</span><span>Coding</span></div>
+</header>
+<nav>
+<a href="#mcq">MCQ</a><a href="#essay">Essay</a><a href="#coding">Coding</a><a href="#notes">Quick notes</a>
+<button id="tg" type="button">Show all answers</button>
+</nav>
+<main>
+<h2 id="mcq">Part 1: Multiple Choice <small>7 × 0.5 = 3.5</small></h2>
+<div class="card"><h3><span class="n">1</span>Which unit is relative to the font size of the root element?</h3><div class="ask"><b>What it asks:</b> Pick the unit whose size depends on the page's base (root) font size.</div><div class="opts"><div>a) em</div><div>b) rem</div><div>c) vw</div><div>d) px</div></div><details><summary>Show answer</summary><div class="a"><b>b) rem.</b> em is relative to the parent/current element.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar"><code>rem</code> means root em: it is measured against the <code>&lt;html&gt;</code> font size, so it stays consistent everywhere. <code>em</code> is measured against the current element's (or its parent's) font size, so it compounds when elements are nested. Memory trick: rem = root.</div></details></div>
+<div class="card"><h3><span class="n">2</span>What color will the paragraph be?</h3><pre><code>&lt;p id="content" class="article"&gt;Hello&lt;/p&gt;
+
+#content { color: blue; }
+.article { color: green; }
+p        { color: red; }</code></pre><div class="ask"><b>What it asks:</b> Work out the final text color. When rules conflict, the browser picks the strongest one.</div><div class="opts"><div>a) red</div><div>b) green</div><div>c) blue</div><div>d) black</div></div><details><summary>Show answer</summary><div class="a"><b>c) blue.</b> ID beats class, class beats element.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">Strength order, strongest first: <code>#id</code>, then <code>.class</code>, then element name like <code>p</code>. Here <code>#content</code> wins, so the text is blue, no matter the order of the lines.</div></details></div>
+<div class="card"><h3><span class="n">3</span>Which selector matches only the <code>&lt;a&gt;</code> elements that are direct children of a <code>&lt;div&gt;</code>?</h3><div class="ask"><b>What it asks:</b> Pick the symbol that selects direct children only (not everything inside the div).</div><div class="opts"><div>a) <code>div a</code></div><div>b) <code>div &gt; a</code></div><div>c) <code>div + a</code></div><div>d) <code>div ~ a</code></div></div><details><summary>Show answer</summary><div class="a"><b>b) <code>div &gt; a</code>.</b> <code>div a</code> = all descendants, <code>div + a</code> = next sibling, <code>div ~ a</code> = all following siblings.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar"><code>&gt;</code> = direct child. A space = any descendant, however deep. <code>+</code> = the very next sibling. <code>~</code> = all following siblings. Tip: the arrow <code>&gt;</code> points from parent to child.</div></details></div>
+<div class="card"><h3><span class="n">4</span>What does <code>typeof null</code> return in JavaScript?</h3><div class="ask"><b>What it asks:</b> What type does JavaScript report for the value <code>null</code>?</div><div class="opts"><div>a) null</div><div>b) undefined</div><div>c) object</div><div>d) number</div></div><details><summary>Show answer</summary><div class="a"><b>c) "object".</b> A historical quirk.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">The answer is <code>"object"</code>. It is an old bug in the language that was never fixed so old websites would not break. Just memorize it.</div></details></div>
+<div class="card"><h3><span class="n">5</span>What does a 5xx status code (e.g. 500, 502, 503) mean?</h3><div class="ask"><b>What it asks:</b> What do status codes starting with 5 mean?</div><div class="opts"><div>a) Success</div><div>b) Redirection</div><div>c) Client error</div><div>d) Server error</div></div><details><summary>Show answer</summary><div class="a"><b>d) Server error.</b> 3xx = redirection, 4xx = client error, 2xx = success.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">The first digit gives the class: 2 success, 3 redirection, 4 client error (your fault), 5 server error (the server's fault). Example: 404 = page does not exist, 500 = the server crashed.</div></details></div>
+<div class="card"><h3><span class="n">6</span>Which element lets you show another HTML page inside your page?</h3><div class="ask"><b>What it asks:</b> Pick the tag that shows another HTML page inside your page.</div><div class="opts"><div>a) <code>&lt;frame&gt;</code></div><div>b) <code>&lt;iframe&gt;</code></div><div>c) <code>&lt;link&gt;</code></div><div>d) <code>&lt;embed-page&gt;</code></div></div><details><summary>Show answer</summary><div class="a"><b>b) <code>&lt;iframe&gt;</code></b>, e.g. <code>&lt;iframe src="page.html" width="560" height="256"&gt;&lt;/iframe&gt;</code></div></details><details class="arx"><summary>Simple explanation</summary><div class="ar"><code>iframe</code> embeds another HTML page in a frame inside your page. <code>src</code> gives its address, <code>width</code> and <code>height</code> give its size.</div></details></div>
+<div class="card"><h3><span class="n">7</span>What color will the first <code>&lt;h1&gt;</code> (class="title") be?</h3><pre><code>&lt;h1 class="title"&gt;CPIT 405&lt;/h1&gt;
+
+h1       { color: green !important; }
+h1.title { color: red; }</code></pre><div class="ask"><b>What it asks:</b> Work out the heading color. Two rules conflict, and one of them has <code>!important</code>.</div><div class="opts"><div>a) red</div><div>b) green</div><div>c) black</div><div>d) silver</div></div><details><summary>Show answer</summary><div class="a"><b>b) green.</b> <code>!important</code> overrides every specificity rule.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar"><code>!important</code> breaks all the strength rules and always wins, even against a stronger selector (like a class). So the result is green. Think of it as having the last word.</div></details></div>
+<div class="card"><h3>HTTP Status Codes</h3><div class="tw"><table><tr><th>Code</th><th>Meaning</th><th>Class</th></tr><tr><td class="s2xx">200</td><td>OK</td><td>2xx Success</td></tr><tr><td class="s2xx">201</td><td>Created</td><td>2xx Success</td></tr><tr><td class="s2xx">204</td><td>No Content</td><td>2xx Success</td></tr><tr><td class="s3xx">301</td><td>Moved Permanently</td><td>3xx Redirection</td></tr><tr><td class="s3xx">302</td><td>Moved Temporarily</td><td>3xx Redirection</td></tr><tr><td class="s4xx">400</td><td>Bad Request (missing/invalid data)</td><td>4xx Client error</td></tr><tr><td class="s4xx">401</td><td>Unauthorized (not logged in)</td><td>4xx Client error</td></tr><tr><td class="s4xx">403</td><td>Forbidden (logged in, no permission)</td><td>4xx Client error</td></tr><tr><td class="s4xx">404</td><td>Not Found</td><td>4xx Client error</td></tr><tr><td class="s5xx">500</td><td>Internal Server Error</td><td>5xx Server error</td></tr><tr><td class="s5xx">502</td><td>Bad Gateway (3rd-party API failed)</td><td>5xx Server error</td></tr><tr><td class="s5xx">503</td><td>Service Unavailable (overloaded/timeout)</td><td>5xx Server error</td></tr></table></div></div>
+<h2 id="essay">Part 2: Short Essay <small>4 questions</small></h2>
+<div class="card"><h3><span class="n">1</span>Explain the difference between GET and POST.</h3><div class="ask"><b>What it asks:</b> Explain how two HTTP methods differ when sending a request to the server.</div><details><summary>Show answer</summary><div class="a"><ul><li><b>GET:</b> retrieves data; parameters appear in the URL.</li><li><b>POST:</b> creates a resource; data is sent in the request body.</li><li>Others: <b>PUT</b> full update, <b>PATCH</b> partial update, <b>DELETE</b> removes.</li></ul></div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">GET asks for data, and its parameters sit in the URL (like <code>?q=cat</code>), so they are visible. POST sends new data inside the request body (like a login form), so it does not show in the URL. PUT replaces fully, PATCH replaces partly, DELETE removes.</div></details></div>
+<div class="card"><h3><span class="n">2</span>Identify and explain the components of a URL.</h3><div class="ask"><b>What it asks:</b> Split a URL into its parts and say what each part does.</div><details><summary>Show answer</summary><div class="a"><pre><code>https://google.com:443/search?q=cat#top</code></pre><div class="tw"><table><tr><th>Part</th><th>Example</th><th>Meaning</th></tr><tr><td>Protocol</td><td>https</td><td>http, https, ftp, file</td></tr><tr><td>Domain name</td><td>google.com</td><td>Readable server name</td></tr><tr><td>Port</td><td>443</td><td>HTTP 80, HTTPS 443</td></tr><tr><td>Path</td><td>/search</td><td>Resource on the server</td></tr><tr><td>Query string</td><td>?q=cat</td><td>Extra data, starts with ?</td></tr><tr><td>Fragment</td><td>#top</td><td>Element id, starts with #</td></tr></table></div></div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">Read the URL in order: protocol <code>https</code>, domain, port <code>:443</code>, path <code>/search</code>, then <code>?</code> and the query, then <code>#</code> and the fragment. The query sends data to the server; the fragment jumps to an element inside the page.</div></details></div>
+<div class="card"><h3><span class="n">3</span>What is the difference between JavaScript operators?</h3><div class="ask"><b>What it asks:</b> List the kinds of JavaScript operators with examples, and contrast <code>==</code> with <code>===</code>.</div><details><summary>Show answer</summary><div class="a"><ul><li><b>Arithmetic:</b> <code>+ - * / % **</code></li><li><b>Assignment:</b> <code>= += -= *= /= %=</code></li><li><b>Comparison:</b> <code>== != === !== &lt; &gt; &lt;= &gt;=</code></li><li><code>==</code> loose (value only, converts type); <code>===</code> strict (value and type): <code>5 == "5"</code> true, <code>5 === "5"</code> false.</li><li><b>Increment/decrement:</b> <code>++ --</code>; <b>String:</b> <code>+</code> concatenates; <b>Spread:</b> <code>...</code> unpacks arrays/objects.</li></ul></div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">Group them: arithmetic (<code>+ - *</code>), assignment (<code>=</code>), comparison (<code>== ===</code>), increment (<code>++</code>). Key point: <code>==</code> compares the value only and converts the type, while <code>===</code> compares value and type. So <code>5 == "5"</code> is true but <code>5 === "5"</code> is false.</div></details></div>
+<h3 style="margin:26px 0 0">Possible 4th question</h3>
+<div class="card"><h3>Internet vs Web?</h3><div class="ask"><b>What it asks:</b> Explain how the Internet differs from the Web.</div><details><summary>Show answer</summary><div class="a"><b>Internet:</b> network of networks (TCP/IP), the infrastructure. <b>Web:</b> information system over the Internet using HTTP.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">The Internet is the network itself that connects devices. The Web is the websites we open in a browser, one service that runs on the Internet, like email.</div></details></div>
+<div class="card"><h3>URL vs URI?</h3><div class="ask"><b>What it asks:</b> Explain how a URL differs from a URI.</div><details><summary>Show answer</summary><div class="a"><b>URL</b> locates a resource (<code>https://google.com</code>). <b>URI</b> identifies it (<code>mailto:a@a.com</code>). Every URL is a URI, not vice versa.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">A URL is an address that says where a resource is (a website link). A URI is broader: it identifies something without necessarily giving its location (like <code>mailto:</code>). Every URL is a URI, not the other way around.</div></details></div>
+<div class="card"><h3>Static vs Dynamic website?</h3><div class="ask"><b>What it asks:</b> Explain how a static website differs from a dynamic one.</div><details><summary>Show answer</summary><div class="a"><b>Static:</b> same content for all, HTML/CSS/JS, cheap. <b>Dynamic:</b> generated per request (PHP, Node, Python), complex.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">Static pages are ready-made and identical for everyone. Dynamic pages are built by the server when you ask, like a news site or your shop account.</div></details></div>
+<div class="card"><h3>Three tiers of web architecture?</h3><div class="ask"><b>What it asks:</b> Name the three tiers and what each does.</div><details><summary>Show answer</summary><div class="a"><b>Presentation</b> (front-end UI), <b>Application</b> (back-end logic), <b>Data</b> (database, CRUD).</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">Think of a restaurant: the dining room you see (Presentation), the kitchen that processes the order (Application), and the storage room (Data).</div></details></div>
+<div class="card"><h3>Page load steps in order?</h3><div class="ask"><b>What it asks:</b> Put the page-load steps in order.</div><details><summary>Show answer</summary><div class="a"><b>URL, DNS, TCP, TLS, HTTP Request, HTTP Response.</b></div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">Like making a phone call: type the address (URL), look up the number (DNS), dial (TCP), encrypt the line (TLS), ask for the page (Request), get the answer (Response).</div></details></div>
+<div class="card"><h3>HTTP basics?</h3><div class="ask"><b>What it asks:</b> Explain the basics of HTTP.</div><details><summary>Show answer</summary><div class="a"><b>Stateless:</b> each request is independent. <b>Headers:</b> extra info (Authorization, Content-Type, User-Agent, Cookie). <b>Body:</b> the data sent/received (JSON, HTML...).</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">Stateless means the server forgets who you are after each request. Headers are extra info about the request, like the browser type. The body is the content itself, like form data.</div></details></div>
+<div class="card"><h3>Inline vs Block?</h3><div class="ask"><b>What it asks:</b> Explain how inline elements differ from block elements.</div><details><summary>Show answer</summary><div class="a"><b>Block</b> starts a new line, holds inline (<code>div p ul h1 form table</code>). <b>Inline</b> doesn't, can't hold block (<code>a img span input button</code>).</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">Block takes a full line and starts a new one (like <code>div</code>). Inline only takes the space it needs inside a line (like <code>span</code>). A block cannot go inside an inline element.</div></details></div>
+<div class="card"><h3>var vs let?</h3><div class="ask"><b>What it asks:</b> Explain how var differs from let.</div><details><summary>Show answer</summary><div class="a"><b>var:</b> function-scoped, added to <code>window</code>. <b>let:</b> block-scoped, not added to <code>window</code>.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar"><code>let</code> lives only inside the <code>{ }</code> where you declare it. <code>var</code> escapes those braces and is visible outside the block, which causes bugs. Prefer <code>let</code>.</div></details></div>
+<h2 id="coding">Part 3: Coding <small>7 questions</small></h2>
+<div class="card"><h3><span class="n">1</span>Complete the HTML page by adding two links: Syllabus and Course</h3><p>Use the anchor tag.</p><pre><code>&lt;body&gt;
+  &lt;h1&gt;CPIT-405&lt;/h1&gt;
+  &lt;!-- add the links here --&gt;
+&lt;/body&gt;</code></pre><div class="ask"><b>What it asks:</b> Complete the page by adding two links with the anchor tag.</div><details><summary>Show answer</summary><pre><code>&lt;a href="syllabus.html"&gt;Syllabus&lt;/a&gt;
+&lt;a href="course.html"&gt;Course&lt;/a&gt;</code></pre><div class="a">Use <code>target="_blank"</code> to open in a new tab.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">A link is an <code>&lt;a&gt;</code> tag: the address goes in <code>href</code> and the visible text goes between the tags. Write two lines, one per link.</div></details></div>
+<div class="card"><h3><span class="n">2</span>Fix the following HTML form</h3><pre><code>&lt;form action="/login" method="post"&gt;
+  &lt;label&gt;Username&lt;/label&gt;
+  &lt;input type="text" name="username"&gt;
+  &lt;label&gt;Password&lt;/label&gt;
+  &lt;input type="text" name="password"&gt;
+  &lt;input type="submit"&gt;
+&lt;/form&gt;</code></pre><div class="ask"><b>What it asks:</b> The code has mistakes; rewrite it correctly.</div><details><summary>Show answer</summary><pre><code>&lt;form action="/login" method="post"&gt;
+  &lt;label for="username"&gt;Username:&lt;/label&gt;
+  &lt;input type="text" name="username" id="username" required&gt;
+  &lt;label for="password"&gt;Password:&lt;/label&gt;
+  &lt;input type="password" name="password" id="password" required&gt;
+  &lt;input type="submit" value="Login"&gt;
+&lt;/form&gt;</code></pre><div class="a">Key fix: <code>type="password"</code>. Also <code>for</code>/<code>id</code> on labels, <code>value</code> on submit, <code>required</code>.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">Main mistake: the password field must be <code>type="password"</code> so the characters are hidden. Also connect each label to its field with <code>for</code> and <code>id</code>, and give the submit button a <code>value</code>.</div></details></div>
+<div class="card"><h3><span class="n">3</span>Complete the code: write the image, video and audio tags</h3><p>Fill in the blanks.</p><pre><code>&lt;img ___="cat.jpg" ___="cat"&gt;
+&lt;video ___="movie.mp4" ___&gt;&lt;/video&gt;
+&lt;audio ___="song.mp3" ___&gt;&lt;/audio&gt;</code></pre><div class="ask"><b>What it asks:</b> Fill the blanks with the right attribute names.</div><details><summary>Show answer</summary><pre><code>&lt;img src="cat.jpg" alt="cat"&gt;
+&lt;video src="movie.mp4" controls&gt;&lt;/video&gt;
+&lt;audio src="song.mp3" controls&gt;&lt;/audio&gt;</code></pre></details><details class="arx"><summary>Simple explanation</summary><div class="ar">An image needs <code>src</code> for the path and <code>alt</code> for the fallback text. Video and audio need <code>src</code> and <code>controls</code> so the play buttons appear.</div></details></div>
+<div class="card"><h3><span class="n">4</span>Write an HTML table and CSS for it using pseudo-classes only</h3><p>First row dark blue with white text, last row light yellow, any row light blue on hover.</p><div class="ask"><b>What it asks:</b> Write an HTML table, then CSS that colors the first row, the last row, and any row on hover, using pseudo-classes only (no class or id).</div><details><summary>Show answer</summary><pre><code>&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Grade&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Ali&lt;/td&gt;&lt;td&gt;90&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Sara&lt;/td&gt;&lt;td&gt;85&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Omar&lt;/td&gt;&lt;td&gt;78&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+tr:first-child { background: navy; color: white; }
+tr:last-child  { background: lightyellow; }
+tr:hover       { background: lightblue; }</code></pre><div class="a">Merged cells: <code>colspan="2"</code> merges columns, <code>rowspan="3"</code> merges rows (e.g. <code>&lt;th rowspan="3"&gt;Day&lt;/th&gt;</code>).</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">Pseudo-classes start with a colon: <code>:first-child</code> is the first element, <code>:last-child</code> the last one, <code>:hover</code> applies when the mouse is over it. Write them right after <code>tr</code>. For merged cells: <code>colspan</code> merges columns, <code>rowspan</code> merges rows.</div></details></div>
+<div class="card"><h3><span class="n">5</span>JavaScript object and array</h3><p>Create <code>course</code> with properties and a <code>students</code> array (two students). Add <code>addStudent(name)</code> that adds a new student and returns the number of students.</p><div class="ask"><b>What it asks:</b> Create an object with a students array and a method that adds a student and returns the count.</div><details><summary>Show answer</summary><pre><code>let course = {
+  title: "Web Applications",
+  students: [{ name: "Ali" }, { name: "Ahmed" }],
+  addStudent: function (name) {
+    this.students.push({ name: name });
+    return this.students.length;
+  }
+};
+console.log(course.addStudent("Omar"));  // 3
+console.log(course.students[1].name);    // Ahmed</code></pre><div class="a">If <code>students</code> is an array of strings, use <code>this.students.push(name)</code>.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar">An object uses <code>{ }</code> with <code>name: value</code> pairs; an array uses <code>[ ]</code>. The method lives inside the object, <code>this</code> means the object itself, <code>push</code> adds to the end of the array, and <code>length</code> gives the count.</div></details></div>
+<div class="card"><h3><span class="n">6</span>What is the output? (function, array, three dots)</h3><pre><code>function sum(n, m, ...numbers) {
+  let total = n + m;
+  for (let i = 0; i &lt; numbers.length; i++) {
+    total += numbers[i];
+  }
+  return total;
+}
+console.log(sum(1, 2, 3, 4));
+console.log(sum(1, 2));
+
+function add(x, y, z) { return x + y + z; }
+let arr = [2, 4, 6];
+console.log(add(...arr));</code></pre><div class="ask"><b>What it asks:</b> Write what each <code>console.log</code> prints.</div><details><summary>Show answer</summary><pre><code>10   // n=1, m=2, numbers=[3,4]
+3    // numbers = []
+12   // spread unpacks the array</code></pre><div class="a"><b>Rest</b> <code>...</code> in a function definition collects arguments into an array (must be last). <b>Spread</b> <code>...</code> before an array unpacks it.</div></details><details class="arx"><summary>Simple explanation</summary><div class="ar"><code>...numbers</code> gathers the extra values after the first two into an array. In <code>sum(1,2,3,4)</code>: n=1, m=2, the rest is [3,4], so the total is 10. In <code>add(...arr)</code> the dots spread the array into three values: 2+4+6 = 12.</div></details></div>
+<div class="card"><h3><span class="n">7</span>What is the output? (== and ===)</h3><pre><code>let a = 5;
+let b = 4;
+console.log(a - b);
+console.log(a == b);
+console.log(a === b);
+console.log(5 == "5");
+console.log(5 === "5");</code></pre><div class="ask"><b>What it asks:</b> Write the output of each print line.</div><details><summary>Show answer</summary><pre><code>1
+false
+false
+true    // value only
+false   // value and type</code></pre></details><details class="arx"><summary>Simple explanation</summary><div class="ar"><code>a - b</code> is 1. Comparing 5 and 4 with <code>==</code> or <code>===</code> gives false because they differ. The two operators only differ when the types differ: <code>5 == "5"</code> is true, <code>5 === "5"</code> is false.</div></details></div>
+<h2 id="notes">Quick Revision Notes</h2><div class="grid"><div class="card"><h3>CSS</h3><ul><li><b>Specificity:</b> inline &gt; <code>#id</code> &gt; <code>.class</code> <code>:hover</code> <code>[attr]</code> &gt; element <code>::before</code>. <code>!important</code> beats all.</li><li><b>Add CSS:</b> external <code>&lt;link&gt;</code>, internal <code>&lt;style&gt;</code>, inline <code>style=""</code>. Box model: content, padding, border, margin.</li><li><b>Combinators:</b> space descendant, <code>&gt;</code> child, <code>+</code> next sibling, <code>~</code> all siblings. <code>:</code> pseudo-class, <code>::</code> pseudo-element.</li><li><b>Units:</b> px cm in pt; % vw vh em rem. Float/Flexbox/Grid are optional.</li></ul></div><div class="card"><h3>HTML</h3><ul><li><b>Void (no closing tag):</b> <code>img br hr input meta link</code>.</li><li><b>Input types:</b> text, password, email, number, date, checkbox, radio, file, submit...</li><li><b>Sections:</b> header, nav, main, article, section, aside, footer. <code>div</code> block, <code>span</code> inline.</li></ul></div><div class="card"><h3>JavaScript</h3><ul><li><b>Primitives:</b> Number, BigInt, String, Symbol, Boolean, Null, Undefined. Object is non-primitive.</li><li><b>Functions:</b> declaration, expression, named expression, arrow <code>() =&gt;</code>, IIFE. <code>for...of</code> values, <code>for...in</code> indexes.</li><li><b>Events:</b> inline <code>onclick="f()"</code> vs <code>addEventListener("click", f)</code>; keyboard <code>keydown</code>/<code>keyup</code>.</li><li><b>DOM:</b> <code>getElementById</code>, <code>getElementsByTagName</code>, <code>querySelector(All)</code>, <code>createElement</code>, <code>appendChild</code>, <code>innerHTML</code>.</li><li><b>JSON:</b> <code>JSON.stringify(obj)</code> object to string, <code>JSON.parse(text)</code> string to object.</li><li><b>Async:</b> XHR ready when <code>readyState == 4</code> and <code>status === 200</code>; <code>fetch(url).then(...)</code> or <code>async</code>/<code>await</code>. Cookies: <code>document.cookie</code>.</li></ul></div></div>
+</main>
+<footer>CPIT-405 Practice Exam · Good luck!</footer>
+<script>
+(function(){var b=document.getElementById("tg"),open=false;
+b.addEventListener("click",function(){open=!open;
+document.querySelectorAll("details:not(.arx)").forEach(function(d){d.open=open});
+b.textContent=open?"Hide all answers":"Show all answers"});})();
+</script>
+</body>
+</html>
